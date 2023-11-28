@@ -14,14 +14,17 @@
 </head>
 <body>
     <div class="login">
+      <!--Titulo-->
       <h1>Sinking of the Titanic</h1>
   
-      <!-- Main Input For Receiving Query to our ML -->
-      <!-- edad, sexo, clase, -->
+      <!-- edad, sexo, clase, num hermanos, numero de padres/hijos, tarifa pagada y boton par calcular-->
       <form action="{{ url_for('predict') }}" method="post">
-        <input type="text" name="rate" placeholder="Age" required="required" />
-        <input type="text" name="sales_in_first_month" placeholder="Sex" required="required" />
-        <input type="text" name="sales_in_second_month" placeholder="Class" required="required" />
+        <input class="numbers" type="text" name="Age" placeholder="Age" required>
+        <input id="sex" type="text" name="Sex" placeholder="Sex" required="required" />
+        <input id="clas" type="text" name="Class" placeholder="Class" required="required" />
+        <input class="numbers" type="text" name="Number of brothers" placeholder="Number of brothers" required>
+        <input class="numbers" type="text" name="Number of parents/children" placeholder="Number of parents/children" required="required" />
+        <input id="fee_paid" type="text" name="Fee paid" placeholder="Fee paid" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large"><p>Do u die?</p></button>
       </form>
   
@@ -30,4 +33,58 @@
       {{ prediction_text }}
     </div>
   </body>
+
+
+  <script>
+    //Limita la entrada de datos solo a numeros, hasta 100 o 512
+    document.addEventListener("input", function (e) {
+    if (e.target.tagName.toLowerCase() === "input" && e.target.type === "text" && e.target.id === "fee_paid") {
+        e.target.value = e.target.value.replace(/[^0-9]/g, "");
+        const value = parseInt(e.target.value);
+        if (value < 0) {
+            e.target.value = "0";
+        } else if (value > 512) {
+            e.target.value = "512";
+        }
+    } else if (e.target.tagName.toLowerCase() === "input" && e.target.type === "text" && e.target.className === "numbers") {
+        e.target.value = e.target.value.replace(/[^0-9]/g, "");
+        const value = parseInt(e.target.value);
+        if (value < 0) {
+            e.target.value = "0";
+        } else if (value > 100) {
+            e.target.value = "100";
+        }
+    }
+});
+
+    //Restriccion para que solo acepte male o female
+    document.addEventListener("input", function (e) {
+      if (e.target.tagName.toLowerCase() === "input" && e.target.type === "text" && e.target.id === "sex") {
+        const inputValue = e.target.value.toLowerCase(); // Convertir a minúsculas para hacer la comparación insensible a mayúsculas
+        if (inputValue !== "male" && inputValue !== "female") {
+            e.target.setCustomValidity("Solo se permiten valores 'male' o 'female'");
+        } else {
+            e.target.setCustomValidity(""); // Restablecer la validez si es 'male' o 'female'
+        }
+      } 
+    });
+
+
+    //Restricción para que solo acepte numeros del 1 al 3
+    document.addEventListener("input", function (e) {
+      if (e.target.tagName.toLowerCase() === "input" && e.target.type === "text" && e.target.id === "clas") {
+        const inputValue = e.target.value;
+        const numericValue = parseInt(inputValue);
+
+        if (isNaN(numericValue) || numericValue < 1 || numericValue > 3) {
+            e.target.setCustomValidity("Solo se permiten números del 1 al 3");
+        } else {
+            e.target.setCustomValidity(""); // Restablecer la validez si es un número del 1 al 3
+        }
+      }
+    });
+
+
+
+    </script>
 </html>

@@ -1,63 +1,49 @@
-/* Estilos generales */
 body {
-    background-image: url('../../images/titanic.jpeg');
+    background-image: url('/static/images/titanic.jpeg');
     background-size: cover; 
     background-repeat: no-repeat;
     font-family: 'Arimo', sans-serif;
-  }
+}
   
-  .login {
-    background: #fff;
-    padding: 20px;
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  h1 {
-    font-family: 'Pacifico', cursive;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilos para los campos de entrada */
-  input[type="text"] {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 5px -5px; /* Espaciado superior e inferior */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Hind', sans-serif;
-  }
-  
-  /* Estilos para el botón */
-  button {
-    width: 100%;
-    background: #3498db;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    margin: 5px 0; /* Espaciado superior e inferior */
-    border-radius: 5px;
-    font-family: 'Hind', sans-serif;
-  }
+.login {
+  background: #fff;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
 
-  button p{
-    font-size: 14px;
-  }
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #333;
+  margin-bottom: 20px;
+}
 
+/* Estilos para los campos de entrada */
+input[type="text"] {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px -5px; /* Espaciado superior e inferior */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Hind', sans-serif;
+}
 
-  
-  
-  
-  /* Estilos para el resultado de la predicción 
-  {{ prediction_text }} {
-    color: #333;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  */
+/* Estilos para el botón */
+button {
+  width: 100%;
+  background: #3498db;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 5px 0; /* Espaciado superior e inferior */
+  border-radius: 5px;
+  font-family: 'Hind', sans-serif;
+}
+
+button p{
+  font-size: 14px;
+}
